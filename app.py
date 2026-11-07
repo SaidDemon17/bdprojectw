@@ -197,7 +197,7 @@ def create_app(test_config=None):
         elif codigo in ("40001", "40P01", "55P03"):
             flash("Otra operación está usando estos datos. Inténtelo nuevamente.", "warning")
         else:
-            app.logger.error("Fallo de PostgreSQL; código=%s", codigo or "conexión")
+            app.logger.error("Fallo de PostgreSQL; código=%s detalle=%s", codigo or "conexión", repr(error))
             return render_template("error.html", titulo="Base de datos no disponible",
                                    mensaje="Revise DATABASE_URL, SSL y la instalación del esquema según el README."), 503
         if request.method == "POST":
