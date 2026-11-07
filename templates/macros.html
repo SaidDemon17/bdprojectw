@@ -1,0 +1,14 @@
+{% macro csrf() %}<input type="hidden" name="csrf_token" value="{{ csrf_token }}">{% endmacro %}
+{% macro campo(nombre, etiqueta, tipo='text', valor='', maximo='', requerido=true) %}
+<label class="form-label d-block">{{ etiqueta }}<input class="form-control mt-2" name="{{ nombre }}" type="{{ tipo }}" value="{{ valor }}" {% if maximo %}maxlength="{{ maximo }}"{% endif %} {% if requerido %}required{% endif %} {% if tipo=='date' %}min="1900-01-01" max="9999-12-31"{% endif %}></label>
+{% endmacro %}
+{% macro estado(i) %}{% set color, etiqueta = i|estado_badge %}<span class="badge text-bg-{{ color }}">{{ etiqueta }}</span>{% endmacro %}
+{% macro opciones_inscripcion(filas) %}
+<option value="">Seleccione una inscripción</option>{% for i in filas %}<option value="{{ i.id_inscripcion }}">#{{ i.id_inscripcion }} · {{ i.cliente }} · {{ i.dni }} · {{ i.tipo }} · saldo {{ i.saldo|soles }}</option>{% endfor %}
+{% endmacro %}
+{% macro tabla_clases(clases) %}
+<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Hora</th><th>Clase</th><th>Entrenador</th><th>Ocupación</th><th>Disponibles</th></tr></thead><tbody>
+{% for c in clases %}<tr><td class="fw-bold">{{ c.horario.strftime('%H:%M') }}</td><td>{{ c.nombre }}</td><td>{{ c.entrenador }}</td><td><div class="ocupacion"><span style="width:{{ (c.ocupados / c.capacidad * 100)|round }}%"></span></div><small>{{ c.ocupados }} / {{ c.capacidad }}</small></td><td><span class="badge {{ 'text-bg-success' if c.disponibles else 'text-bg-danger' }}">{{ c.disponibles }} cupos</span></td></tr>
+{% else %}<tr><td colspan="5" class="empty">No hay clases registradas.</td></tr>{% endfor %}
+</tbody></table></div>
+{% endmacro %}
