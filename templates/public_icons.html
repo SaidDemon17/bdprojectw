@@ -2,3 +2,25 @@
 {% macro icono(nombre, clase='') -%}
 <svg class="fp-icon {{ clase }}" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><use href="{{ url_for('static', filename='img/icons.svg') }}#{{ nombre }}"></use></svg>
 {%- endmacro %}
+
+{# Símbolos deportivos genéricos para las disciplinas de las clases publicadas. #}
+{% macro deporte(disciplina) -%}
+<svg class="fp-sport-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{% if disciplina == 'Spinning' %}
+<circle cx="14" cy="45" r="10"></circle><circle cx="50" cy="45" r="10"></circle><path d="M14 45 26 23l12 22H14l19-16h11l6 16M22 23h10M39 17h6l5 15"></path>
+{% elif disciplina == 'Yoga' %}
+<circle cx="32" cy="13" r="5"></circle><path d="M32 23v17M24 27l-8 10-7-3M40 27l8 10 7-3M22 28l10-5 10 5M24 40l-12 9c-5 5 2 9 9 6l22-10M40 40l12 9c5 5-2 9-9 6L21 45"></path>
+{% elif disciplina == 'Zumba' %}
+<circle cx="35" cy="12" r="5"></circle><path d="m29 23-7 13 12 7M29 23l14 8 10-11M29 23l-9-2-7-10M22 36l-8 13-7 4M34 43l8 12 9-1"></path>
+{% elif disciplina == 'Funcional' %}
+<circle cx="33" cy="12" r="5"></circle><path d="m31 22-4 15 12 7-6 12M29 28H15l-5-7M31 24l11 9h12M27 37l-11 8-3 11M7 56h11M29 56h10"></path>
+{% else %}
+<g transform="rotate(-32 32 32)"><path d="M22 32h20"></path><rect x="12" y="21" width="10" height="22" rx="2"></rect><rect x="42" y="21" width="10" height="22" rx="2"></rect><path d="M7 26v12M57 26v12M7 32h5M52 32h5"></path></g>
+{% endif %}
+</svg>
+{%- endmacro %}
+
+{# Icono de WhatsApp usado únicamente para identificar el chat de demostración. #}
+{% macro whatsapp() -%}
+<svg class="fp-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.48 0 .13 5.35.13 11.92c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.65a11.9 11.9 0 0 0 5.78 1.47h.01c6.57 0 11.92-5.35 11.92-11.92a11.84 11.84 0 0 0-3.46-8.42ZM12.05 21.8a9.85 9.85 0 0 1-5.02-1.37l-.36-.21-3.72.98.99-3.63-.23-.37a9.85 9.85 0 0 1-1.51-5.28c0-5.46 4.44-9.9 9.91-9.9a9.83 9.83 0 0 1 7 2.9 9.83 9.83 0 0 1 2.9 7c0 5.46-4.44 9.9-9.96 9.88Zm5.43-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.24-.59-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.71.62.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.18-1.41-.08-.12-.28-.2-.58-.35Z"></path></svg>
+{%- endmacro %}

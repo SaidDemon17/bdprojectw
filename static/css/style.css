@@ -104,25 +104,6 @@ body.public-body {
 .public-body .fp-hero-price > small { color: var(--fp-muted); font-size: 10px; }
 .public-body .fp-visual-word { position: absolute; bottom: -28px; right: 40px; font-size: 8px; letter-spacing: .3em; color: #758da6; }
 
-/* El buscador simulado opera en el navegador y no modifica formularios de Flask. */
-.public-body .fp-finder-wrap { position: relative; margin-top: -34px; z-index: 2; }
-.public-body .fp-finder { display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; row-gap: 14px; align-items: center; padding: 27px 30px 22px; border: 1px solid var(--fp-border); background: #fff; border-radius: 13px; box-shadow: 0 12px 34px #233f5e0a; }
-.public-body .fp-finder-heading { display: flex; gap: 16px; align-items: center; grid-row: span 2; }
-.public-body .fp-finder-icon { display: grid; place-items: center; height: 52px; width: 52px; background: #eef6ff; border: 1px solid #dfecfc; color: var(--fp-blue); border-radius: 12px; flex-shrink: 0; }
-.public-body .fp-finder-icon .fp-icon { width: 25px; height: 25px; }
-.public-body .fp-finder-heading h2 { font-size: 19px; letter-spacing: -.04em; margin: 8px 0 0; }
-.public-body .fp-finder-heading .fp-eyebrow { font-size: 8px; }
-.public-body .fp-finder-controls { display: flex; gap: 12px; align-items: flex-end; }
-.public-body .fp-finder-controls label { flex: 1; font-size: 10px; color: var(--fp-muted); font-weight: 600; }
-.public-body .fp-finder-controls .form-select { margin-top: 6px; min-height: 46px; font-weight: 650; }
-.public-body .fp-finder-controls .btn { font-size: 11px; min-height: 46px; padding: 12px 18px; }
-.public-body .fp-finder-note { grid-column: 2; margin: -7px 0 0; font-size: 9px; color: #78879a; }
-.public-body .fp-finder-result { display: flex; align-items: center; justify-content: space-between; gap: 20px; grid-column: 1 / -1; padding: 18px 20px; border-radius: 8px; background: #f1f7ff; border: 1px solid #dceafa; }
-.public-body .fp-finder-result[hidden] { display: none; }
-.public-body .fp-finder-result strong { font-size: 13px; }
-.public-body .fp-finder-result p { font-size: 11px; margin: 4px 0 0; }
-.public-body .fp-finder-result a { white-space: nowrap; color: var(--fp-blue); }
-
 /* Beneficios: iconos Bootstrap y una grilla espaciosa, sin tarjetas recargadas. */
 .public-body .fp-section-heading { margin-bottom: 44px; }
 .public-body .fp-section-heading h2 { margin: 13px 0 13px; font-size: clamp(27px, 3vw, 36px); line-height: 1.2; }
@@ -292,9 +273,6 @@ body.public-body {
   .public-body .fp-hero-grid { gap: 24px; }
   .public-body .fp-hero-photo { right: 0; }
   .public-body .fp-hero-price { right: -10px; }
-  .public-body .fp-finder { padding: 25px; gap: 14px; }
-  .public-body .fp-finder-heading h2 { font-size: 16px; }
-  .public-body .fp-finder-icon { width: 45px; height: 45px; }
   .public-body .fp-plan-card { padding: 25px; }
   .public-body .fp-plan-featured { padding: 24px; }
   .public-body .fp-app-grid { gap: 35px; }
@@ -324,10 +302,6 @@ body.public-body {
   .public-body .fp-hero-price { padding: 12px 15px; bottom: 15px; }
   .public-body .fp-hero-price strong { font-size: 22px; }
   .public-body .fp-hero-details { gap: 10px; margin-top: 22px; font-size: 9px; }
-  .public-body .fp-finder { grid-template-columns: .95fr 1.05fr; }
-  .public-body .fp-finder-heading { gap: 12px; }
-  .public-body .fp-finder-heading h2 { font-size: 16px; line-height: 1.5; }
-  .public-body .fp-finder-controls { flex-direction: column; align-items: stretch; gap: 8px; }
   .public-body .fp-benefit { padding: 0 18px; }
   .public-body .fp-benefit h3 { font-size: 12px; }
   .public-body .fp-benefit p { font-size: 10px; }
@@ -384,15 +358,6 @@ body.public-body {
   .public-body .fp-photo-caption strong { font-size: 10px; }
   .public-body .fp-caption-icon { width: 33px; height: 33px; }
   .public-body .fp-visual-word { right: 3px; bottom: -24px; font-size: 7px; }
-  .public-body .fp-finder-wrap { margin-top: -26px; }
-  .public-body .fp-finder { display: flex; flex-direction: column; align-items: stretch; gap: 19px; padding: 23px; }
-  .public-body .fp-finder-heading h2 { font-size: 18px; line-height: 1.3; margin-top: 7px; }
-  .public-body .fp-finder-heading { gap: 13px; }
-  .public-body .fp-finder-controls { flex-direction: row; align-items: flex-end; }
-  .public-body .fp-finder-controls .btn { font-size: 10px; padding: 11px 13px; gap: 9px; }
-  .public-body .fp-finder-controls .btn > .fp-icon { width: 14px; height: 14px; }
-  .public-body .fp-finder-note { margin: -7px 0 0; font-size: 8px; }
-  .public-body .fp-finder-result { align-items: flex-start; flex-direction: column; gap: 12px; padding: 15px; }
   .public-body .fp-benefits-grid { grid-template-columns: 1fr 1fr; row-gap: 32px; }
   .public-body .fp-benefit { padding: 0 16px; }
   .public-body .fp-benefit:nth-child(odd) { border-left: 0; }
@@ -463,8 +428,6 @@ body.public-body {
   .public-body .fp-hero-actions { gap: 13px; }
   .public-body .fp-hero-actions > .btn { min-width: 125px; padding: 12px 17px; }
   .public-body .fp-hero-details { font-size: 8px; gap: 12px; }
-  .public-body .fp-finder { padding: 21px 18px; }
-  .public-body .fp-finder-controls { flex-direction: column; align-items: stretch; }
   .public-body .fp-phone { left: calc(50% - 132px); width: 264px; }
   .public-body .fp-phone-floating { right: -5px; }
   .public-body .fp-photo-caption { display: none; }
@@ -472,4 +435,138 @@ body.public-body {
 }
 @media (prefers-reduced-motion: reduce) {
   .public-body *, .public-body *::before, .public-body *::after { transition: none!important; animation: none!important; }
+}
+
+/* Horarios públicos con contraste alto, tipografía más grande y estados legibles. */
+.public-body .fp-schedule-contrast .table {
+  --bs-table-color: #212529;
+  --bs-table-bg: #fff;
+  min-width: 680px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.public-body .fp-schedule-contrast .table thead th {
+  --bs-table-bg: #eaf0f7;
+  padding-top: 19px;
+  padding-bottom: 19px;
+  color: #172a40;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  border-bottom: 2px solid #bdcada;
+}
+.public-body .fp-schedule-contrast .table td {
+  color: #212529;
+  border-color: #d6dfe9;
+  font-weight: 500;
+}
+.public-body .fp-schedule-contrast .table tbody tr:nth-child(even) { --bs-table-bg: #f6f8fb; }
+.public-body .fp-schedule-contrast .table td:first-child { color: #172a40; }
+.public-body .fp-schedule-contrast .table small { color: #374151; font-size: 12px; font-weight: 600; }
+.public-body .fp-schedule-contrast .ocupacion { background: #d6e0eb; height: 6px; }
+.public-body .fp-schedule-contrast .ocupacion span { background: #0758c5; }
+.public-body .fp-schedule-contrast .badge { font-size: 12px; font-weight: 700; border: 1px solid transparent; }
+.public-body .fp-schedule-contrast .badge.text-bg-success { color: #14532d!important; background: #e1f3e9!important; border-color: #b5d3c0; font-size: 12px; font-weight: 700; }
+.public-body .fp-schedule-contrast .badge.text-bg-danger { color: #7f1d1d!important; background: #fee2e2!important; border-color: #e8b9b9; }
+.public-body .fp-schedule-contrast .fp-schedule-heading { color: #334155; font-size: 12px; }
+.public-body .fp-schedule-contrast .fp-schedule-heading > span:first-child { color: #173a67; font-size: 12px; }
+.public-body .fp-schedule-contrast .fp-table-hint { color: #334155; font-size: 11px; }
+
+/* Sede única y mapa: coordenadas proporcionadas, sin controles de búsqueda simulada. */
+.public-body .fp-location-wrap { position: relative; margin-top: -28px; z-index: 2; }
+.public-body .fp-location-card { display: grid; grid-template-columns: .9fr 1.1fr; overflow: hidden; background: #fff; border: 1px solid var(--fp-border); border-radius: 15px; box-shadow: 0 12px 34px #233f5e0a; }
+.public-body .fp-location-copy { padding: 34px; display: flex; flex-direction: column; align-items: flex-start; }
+.public-body .fp-location-icon { display: grid; place-items: center; width: 45px; height: 45px; margin-bottom: 19px; background: #edf6ff; color: var(--fp-blue); border-radius: 12px; }
+.public-body .fp-location-copy .fp-eyebrow { font-size: 9px; }
+.public-body .fp-location-copy h2 { margin: 12px 0 15px; font-size: 27px; line-height: 1.25; }
+.public-body .fp-location-copy > p { max-width: 370px; margin: 0 0 20px; color: #374151; font-size: 14px; line-height: 1.85; }
+.public-body .fp-location-address { display: inline-flex; gap: 8px; align-items: center; color: #334155; font-size: 12px; font-weight: 650; margin-bottom: 23px; }
+.public-body .fp-location-address .fp-icon { width: 16px; height: 16px; color: var(--fp-blue); }
+.public-body .fp-location-copy .btn { font-size: 12px; margin-top: auto; }
+.public-body .fp-location-map { position: relative; min-height: 340px; background: #edf4fb; border-left: 1px solid var(--fp-border); }
+.public-body .fp-location-map iframe { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+
+/* Tarjetas del equipo agrupado por entrenador, a partir de sus clases públicas. */
+.public-body .fp-team-section { background: #f8fafc; border-top: 1px solid var(--fp-border); }
+.public-body .fp-team-card { border: 1px solid #dce5ee; border-radius: 13px; overflow: hidden; box-shadow: 0 7px 24px #16365a05; transition: border-color .2s ease, box-shadow .2s ease; }
+.public-body .fp-team-card:hover { border-color: #a7c5ed; box-shadow: 0 12px 28px #16365a10; }
+.public-body .fp-team-card-top { position: relative; padding: 30px 16px 20px; background: #f3f7fc; border-bottom: 1px solid #e9eef4; }
+.public-body .fp-team-avatar { display: grid; place-items: center; width: 96px; height: 96px; margin: 0 auto; background: #e0edff; border: 6px solid #fff; border-radius: 50%; color: #0757b9; box-shadow: 0 0 0 1px #d7e3f2; }
+.public-body .fp-team-avatar--yoga { color: #296746; background: #e1f1e8; }
+.public-body .fp-team-avatar--zumba { color: #a94549; background: #fbe7e7; }
+.public-body .fp-team-avatar--funcional { color: #98601b; background: #fff0d6; }
+.public-body .fp-team-avatar--fuerza { color: #4d5095; background: #e9e8fc; }
+.public-body .fp-sport-icon { width: 54px; height: 54px; }
+.public-body .fp-team-number { display: block; text-align: center; font-size: 8px; font-weight: 750; letter-spacing: .15em; color: #53657b; margin-top: 16px; }
+.public-body .fp-team-card .card-body { padding: 22px 20px; }
+.public-body .fp-team-disciplines { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 13px; }
+.public-body .fp-team-disciplines > span { color: #17487f; background: #eaf3ff; padding: 4px 9px; border-radius: 5px; font-size: 10px; font-weight: 750; }
+.public-body .fp-team-card .card-title { color: #172a40; font-size: 18px; line-height: 1.4; margin-bottom: 19px; }
+.public-body .fp-team-card .fp-team-label { color: #495b70; font-size: 8px; font-weight: 750; letter-spacing: .07em; margin-bottom: 7px; }
+.public-body .fp-team-classes { list-style: none; padding: 0; margin: 0; color: #374151; font-size: 12px; line-height: 1.8; }
+.public-body .fp-team-card .card-footer { background: #fff; border-top: 1px solid #e9eef4; padding: 15px 20px; }
+.public-body .fp-team-card .card-footer a { display: flex; gap: 7px; justify-content: space-between; align-items: center; color: #0758c5; font-weight: 750; font-size: 10px; }
+.public-body .fp-team-card .card-footer .fp-icon { width: 14px; height: 14px; }
+.public-body .fp-team-empty { padding: 24px; text-align: center; color: #374151; }
+
+/* Atención simulada: widget no modal con controles de teclado y mensajes locales. */
+.public-body .fp-chat-widget { --fp-chat-green: #087f45; position: fixed; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); right: 22px; z-index: 1040; }
+.public-body .fp-chat-launcher { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 13px 20px; border: 1px solid #066c39; border-radius: 28px; background: var(--fp-chat-green); color: #fff; box-shadow: 0 6px 25px #065f4638; font-size: 13px; font-weight: 750; transition: background-color .2s ease, box-shadow .2s ease; }
+.public-body .fp-chat-launcher:hover { background: #066936; box-shadow: 0 8px 30px #065f4650; }
+.public-body .fp-chat-launcher .fp-icon { width: 24px; height: 24px; }
+.public-body .fp-chat-panel { position: absolute; right: 0; bottom: calc(100% + 13px); display: flex; flex-direction: column; width: 365px; max-width: calc(100vw - 32px); height: 515px; max-height: calc(100dvh - 116px - env(safe-area-inset-bottom, 0px)); overflow: hidden; border: 1px solid #cddfd5; border-radius: 16px; background: #fff; box-shadow: 0 15px 60px #173c2f33; }
+.public-body .fp-chat-panel[hidden] { display: none; }
+.public-body .fp-chat-header { flex-shrink: 0; display: flex; align-items: center; gap: 12px; padding: 18px; border-bottom: 1px solid #deebe3; background: #fff; }
+.public-body .fp-chat-avatar { position: relative; display: block; flex-shrink: 0; width: 46px; height: 46px; overflow: hidden; border: 2px solid #c9ead7; border-radius: 50%; background: #e5f1ee; }
+.public-body .fp-chat-avatar img { position: absolute; width: 235px; height: auto; max-width: none; left: -81px; top: -15px; }
+.public-body .fp-chat-identity h2 { margin: 0 0 5px; font-size: 15px; letter-spacing: -.025em; }
+.public-body .fp-chat-identity > span { display: flex; align-items: center; gap: 5px; font-size: 10px; color: #3b5c4b; }
+.public-body .fp-chat-identity i { width: 5px; height: 5px; border-radius: 50%; background: var(--fp-chat-green); }
+.public-body .fp-chat-close { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; margin-left: auto; border: 1px solid #dce9e1; border-radius: 50%; color: #284c39; background: #f5faf7; font-size: 23px; line-height: 1; }
+.public-body .fp-chat-close:hover { background: #e7f3ec; }
+.public-body .fp-chat-conversation { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: 14px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 20px 18px; background: #f5f9f6; }
+.public-body .fp-chat-day { align-self: center; color: #506559; font-size: 8px; font-weight: 750; letter-spacing: .08em; margin-bottom: 3px; }
+.public-body .fp-chat-message { flex-shrink: 0; max-width: 94%; padding: 13px 14px 10px; border-radius: 2px 12px 12px 12px; border: 1px solid #c6e0cf; background: #e0f3e6; overflow-wrap: anywhere; }
+.public-body .fp-chat-message p { margin: 0; color: #17452b; font-size: 13px; line-height: 1.75; white-space: pre-wrap; }
+.public-body .fp-chat-message > span { display: block; color: #3b614b; font-size: 8px; text-align: right; margin-top: 9px; }
+.public-body .fp-chat-message--visitor { align-self: flex-end; border-radius: 12px 2px 12px 12px; border-color: #d8e2db; background: #fff; }
+.public-body .fp-chat-message--visitor p { color: #243d2e; }
+.public-body .fp-chat-intro { color: #425d4d; font-size: 11px; line-height: 1.8; margin: 0 7px; }
+.public-body .fp-chat-composer { display: flex; align-items: center; flex-shrink: 0; gap: 10px; padding: 13px 16px 10px; border-top: 1px solid #dce9e0; background: #fff; }
+.public-body .fp-chat-composer input { width: 100%; min-width: 0; min-height: 42px; padding: 9px 13px; border: 1px solid #cadbd0; border-radius: 22px; background: #f9fcfa; color: #212529; font-size: 13px; outline: none; }
+.public-body .fp-chat-composer input::placeholder { color: #506559; opacity: 1; }
+.public-body .fp-chat-composer input:focus { border-color: var(--fp-chat-green); box-shadow: 0 0 0 3px #087f451a; }
+.public-body .fp-chat-send { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 42px; padding: 0; border: 1px solid #066c39; border-radius: 50%; color: #fff; background: var(--fp-chat-green); }
+.public-body .fp-chat-send .fp-icon { width: 19px; height: 19px; }
+.public-body .fp-chat-send:hover:not(:disabled) { background: #066936; }
+.public-body .fp-chat-send:disabled { background: #e4ece7; color: #597463; border-color: #d7e3dc; cursor: not-allowed; }
+.public-body .fp-chat-disclaimer { flex-shrink: 0; margin: 0; padding: 0 18px 12px; color: #465e50; text-align: center; font-size: 9px; line-height: 1.6; }
+.public-body .public-footer { padding-bottom: 100px; }
+
+@media (max-width: 991px) {
+  .public-body .fp-location-copy { padding: 28px; }
+  .public-body .fp-location-copy h2 { font-size: 24px; }
+  .public-body .fp-location-copy > p { font-size: 13px; }
+  .public-body .fp-location-map { min-height: 330px; }
+}
+@media (max-width: 767px) {
+  .public-body .fp-location-wrap { margin-top: -20px; }
+  .public-body .fp-location-card { grid-template-columns: minmax(0, 1fr); }
+  .public-body .fp-location-copy { padding: 27px; }
+  .public-body .fp-location-copy h2 { font-size: 26px; }
+  .public-body .fp-location-copy > p { font-size: 14px; }
+  .public-body .fp-location-map { min-height: 280px; border-left: 0; border-top: 1px solid var(--fp-border); }
+  .public-body .fp-team-card-top { padding-top: 25px; }
+  .public-body .fp-team-card .card-title { font-size: 20px; }
+  .public-body .fp-team-card .card-body { padding: 23px; }
+  .public-body .fp-team-card .card-footer { padding: 17px 23px; }
+  .public-body .fp-team-card .card-footer a { font-size: 12px; }
+  .public-body .fp-chat-widget { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .public-body .fp-chat-launcher { min-height: 49px; padding: 12px 17px; font-size: 12px; }
+  .public-body .fp-chat-panel { width: 350px; max-height: calc(100dvh - 101px - env(safe-area-inset-bottom, 0px)); }
+  .public-body .fp-chat-header { padding: 15px; gap: 10px; }
+  .public-body .fp-chat-conversation { padding: 17px 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .public-body .fp-team-card, .public-body .fp-chat-launcher { transition: none!important; }
 }
