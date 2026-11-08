@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% from 'macros.html' import tabla_clases %}
-{% from 'public_icons.html' import icono %}
+{% from 'public_icons.html' import icono,deporte %}
 {% block title %}Más fitness a menos precio | Fitness Planet Gym{% endblock %}
 {% block public_content_class %}public-content public-home{% endblock %}
 {% block content %}
@@ -11,9 +11,21 @@
 <div class="fp-hero-visual"><div class="fp-hero-photo"><img src="{{ url_for('static', filename='img/fitness-planet-hero.png') }}" width="1536" height="1024" alt="Dos deportistas en un gimnasio luminoso con equipos de fuerza" fetchpriority="high"></div><div class="fp-photo-caption"><span class="fp-caption-icon">{{ icono('heart-pulse') }}</span><div><strong>Un buen día empieza aquí.</strong><span>Muévete. Disfruta. Repite.</span></div></div>{% if planes %}<div class="fp-hero-price"><span>ENTRENA DESDE</span><strong>{{ planes[0].precio|soles }}</strong><small>Plan {{ planes[0].tipo|lower }}</small></div>{% endif %}<span class="fp-visual-word" aria-hidden="true">FITNESS / PARA TODOS</span></div>
 </div>
 </section>
-{# Buscador ilustrativo: sus controles no pertenecen a ningún formulario del backend. #}
-<section class="container fp-finder-wrap" id="sedes" aria-labelledby="finder-title">
-<div class="fp-finder"><div class="fp-finder-heading"><span class="fp-finder-icon">{{ icono('geo-alt') }}</span><div><span class="fp-eyebrow">ENCUENTRA TU GIMNASIO</span><h2 id="finder-title">Más cerca de tu nueva versión.</h2></div></div><div class="fp-finder-controls"><label for="sede-distrito">Explora una zona<select id="sede-distrito" class="form-select"><option value="Lima Centro">Lima Centro</option><option value="Miraflores">Miraflores</option><option value="San Miguel">San Miguel</option></select></label><button type="button" class="btn fp-btn-primary" id="buscar-sede" aria-controls="resultado-sede">Buscar gimnasio {{ icono('arrow-right') }}</button></div><p class="fp-finder-note">Buscador de demostración · Sedes ilustrativas</p><div class="fp-finder-result" id="resultado-sede" role="status" hidden><div><strong id="sede-nombre"></strong><p>Sede de ejemplo. Descubre nuestros planes y consulta las clases disponibles.</p></div><a class="fp-text-link" href="#planes">Ver membresías {{ icono('arrow-right') }}</a></div></div>
+{# Ubicación suministrada para la sede; el mapa se adapta al contenedor. #}
+<section class="container fp-location-wrap" id="sedes" aria-labelledby="location-title">
+  <div class="fp-location-card">
+    <div class="fp-location-copy">
+      <span class="fp-location-icon">{{ icono('geo-alt') }}</span>
+      <span class="fp-eyebrow">TU PRÓXIMO ENTRENAMIENTO ESTÁ AQUÍ</span>
+      <h2 id="location-title">Nuestra Sede Principal</h2>
+      <p>Nos ubicamos en nuestra sede central de Ate, Lima. ¡Ven y conócenos!</p>
+      <span class="fp-location-address">{{ icono('geo-alt') }} Ate, Lima · Perú</span>
+      <a class="btn fp-btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=-12.028330856139931%2C-76.92385026341864" target="_blank" rel="noopener noreferrer">Abrir en Google Maps {{ icono('arrow-right') }}</a>
+    </div>
+    <div class="fp-location-map">
+      <iframe title="Ubicación de Fitness Planet Gym en Ate, Lima" src="https://maps.google.com/maps?q=-12.028330856139931%2C-76.92385026341864&amp;ll=-12.028330856139931%2C-76.92385026341864&amp;z=17&amp;output=embed" width="640" height="360" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
 </section>
 <section class="fp-section fp-benefits container" id="beneficios" aria-labelledby="benefits-title">
 <div class="fp-section-heading text-center"><span class="fp-eyebrow">TÚ PONES LAS GANAS. NOSOTROS, EL ESPACIO.</span><h2 id="benefits-title">¿Por qué elegirnos?</h2><p>Todo lo que necesitas para hacer del entrenamiento<br class="d-none d-md-block"> tu momento favorito del día.</p></div>
@@ -24,7 +36,45 @@
 <div class="row g-4 fp-plans-grid">{% for p in planes %}<div class="col-md-4"><article class="fp-plan-card {{ 'fp-plan-featured' if loop.index==2 else '' }}">{% if loop.index==2 %}<span class="fp-plan-ribbon">UN PASO MÁS HACIA TU META</span>{% endif %}<div class="fp-plan-top"><span class="fp-plan-number">PLAN / {{ '%02d'|format(loop.index) }}</span><h3>{{ p.tipo }}</h3><p>{{ p.duracion_dias }} días para dar lo mejor de ti.</p></div><div class="fp-plan-price">{{ p.precio|soles }}</div><span class="fp-plan-price-note">Precio total del plan · En soles</span><div class="fp-plan-duration">{{ icono('calendar3') }} {{ p.duracion_dias }} días de duración</div><ul class="fp-plan-benefits"><li>{{ icono('check2') }} Acceso con membresía vigente</li><li>{{ icono('check2') }} Clases grupales según cupo</li><li>{{ icono('check2') }} Rutina personalizada por asignación</li><li>{{ icono('check2') }} Seguimiento de asistencia</li></ul><button type="button" class="btn {{ 'fp-btn-primary' if loop.index==2 else 'fp-btn-outline' }} fp-plan-button" data-bs-toggle="modal" data-bs-target="#inscripcion-info" data-plan="{{ p.tipo }}" data-precio="{{ p.precio|soles }}" aria-label="Elegir plan {{ p.tipo }}">Elegir este plan {{ icono('arrow-right') }}</button></article></div>{% else %}<div class="col-12"><p class="fp-plans-empty">Pronto tendremos nuevos planes para ti.</p></div>{% endfor %}</div>
 <p class="fp-plans-footnote">{{ icono('check-circle-fill') }} Elige tu plan y completa tu inscripción con nuestro equipo en recepción.</p>
 </div></section>
-<section class="fp-section container fp-classes" aria-labelledby="classes-title"><div class="fp-section-heading fp-heading-split"><div><span class="fp-eyebrow">LA ENERGÍA SE COMPARTE</span><h2 id="classes-title">Tu próxima clase empieza aquí.</h2><p>Encuentra tu ritmo y entrena en comunidad.</p></div><a class="btn fp-btn-outline" href="{{ url_for('calendario') }}">Ver calendario {{ icono('arrow-right') }}</a></div><div class="surface fp-schedule-card"><div class="fp-schedule-heading"><span>{{ icono('calendar3') }} Hoy · {{ hoy.strftime('%d/%m/%Y') }}</span><span>Horarios de Lima, Perú</span></div>{{ tabla_clases(clases) }}<p class="fp-table-hint">Desliza para ver todos los cupos {{ icono('arrow-right') }}</p></div></section>
+<section class="fp-section container fp-classes" aria-labelledby="classes-title"><div class="fp-section-heading fp-heading-split"><div><span class="fp-eyebrow">LA ENERGÍA SE COMPARTE</span><h2 id="classes-title">Tu próxima clase empieza aquí.</h2><p>Encuentra tu ritmo y entrena en comunidad.</p></div><a class="btn fp-btn-outline" href="{{ url_for('calendario') }}">Ver calendario {{ icono('arrow-right') }}</a></div><div class="surface fp-schedule-card fp-schedule-contrast"><div class="fp-schedule-heading"><span>{{ icono('calendar3') }} Hoy · {{ hoy.strftime('%d/%m/%Y') }}</span><span>Horarios de Lima, Perú</span></div>{{ tabla_clases(clases) }}<p class="fp-table-hint">Desliza para ver todos los cupos {{ icono('arrow-right') }}</p></div></section>
+{# El listado público contiene los entrenadores con clases. Se agrupan por ID para no repetirlos. #}
+<section class="fp-section fp-team-section" id="equipo" aria-labelledby="team-title">
+  <div class="container">
+    <div class="fp-section-heading text-center">
+      <span class="fp-eyebrow">NUESTRO TEAM</span>
+      <h2 id="team-title">Nuestros Entrenadores</h2>
+      <p>Conoce al equipo que pone energía, técnica y motivación en cada clase.</p>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 justify-content-center">
+      {% for id_entrenador, sesiones in clases|groupby('id_entrenador') %}
+      {# La disciplina corresponde a sus clases publicadas; no se inventan perfiles ni especialidades. #}
+      {% set disciplinas = namespace(nombres=[]) %}
+      {% for sesion in sesiones %}
+        {% set prefijo = sesion.nombre.split()[0]|lower %}
+        {% set disciplina = {'spinning':'Spinning','yoga':'Yoga','zumba':'Zumba','funcional':'Funcional','fuerza':'Fuerza'}.get(prefijo,'Entrenamiento') %}
+        {% if disciplina not in disciplinas.nombres %}{% set disciplinas.nombres = disciplinas.nombres + [disciplina] %}{% endif %}
+      {% endfor %}
+      <div class="col">
+        <article class="card fp-team-card h-100" data-entrenador-id="{{ id_entrenador }}">
+          <div class="fp-team-card-top">
+            <span class="fp-team-avatar fp-team-avatar--{{ disciplinas.nombres[0]|lower }}">{{ deporte(disciplinas.nombres[0]) }}</span>
+            <span class="fp-team-number">TEAM / {{ '%02d'|format(loop.index) }}</span>
+          </div>
+          <div class="card-body">
+            <div class="fp-team-disciplines">{% for disciplina in disciplinas.nombres %}<span>{{ disciplina }}</span>{% endfor %}</div>
+            <h3 class="card-title">{{ sesiones[0].entrenador }}</h3>
+            <p class="fp-team-label">CLASES QUE IMPARTE</p>
+            <ul class="fp-team-classes">{% for sesion in sesiones %}<li>{{ sesion.nombre }}</li>{% endfor %}</ul>
+          </div>
+          <div class="card-footer"><a href="{{ url_for('calendario') }}" aria-label="Ver horarios de {{ sesiones[0].entrenador }}">Conoce sus horarios {{ icono('arrow-right') }}</a></div>
+        </article>
+      </div>
+      {% else %}
+      <div class="col-12"><p class="fp-team-empty">Pronto podrás conocer al equipo de nuestras próximas clases.</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 {# Presentación conceptual de la app; los botones informan que aún no está disponible. #}
 <section class="fp-app-section" id="app" aria-labelledby="app-title"><div class="container fp-app-grid"><div class="fp-phone-stage" aria-hidden="true"><span class="fp-phone-orbit"></span><div class="fp-phone"><div class="fp-phone-camera"></div><div class="fp-phone-screen"><div class="fp-phone-brand">fp<span>FITNESS PLANET</span><span class="fp-phone-avatar">{{ icono('person') }}</span></div><p class="fp-phone-greeting">TU MOMENTO ES AHORA</p><h3>Hoy toca<br>dar lo mejor.</h3><div class="fp-phone-workout"><div><span>MI ENTRENAMIENTO</span><strong>Base de fuerza</strong><small>4 ejercicios · Rutina de ejemplo</small></div><span class="fp-workout-icon">{{ icono('lightning-charge') }}</span></div><div class="fp-phone-section-label">Tu rutina de hoy <span>VER TODO</span></div>{% for numero,nombre,detalle in [('01','Sentadilla','3 series · 12 repeticiones'),('02','Press de banca','3 series · 10 repeticiones'),('03','Remo con mancuerna','3 series · 12 repeticiones')] %}<div class="fp-phone-exercise"><span>{{ numero }}</span><div><strong>{{ nombre }}</strong><small>{{ detalle }}</small></div>{{ icono('chevron-right') }}</div>{% endfor %}<div class="fp-phone-start">Empezar entrenamiento {{ icono('arrow-right') }}</div><div class="fp-phone-nav">{{ icono('grid') }} {{ icono('heart-pulse') }} {{ icono('person') }}</div></div></div><span class="fp-phone-floating">{{ icono('check-circle-fill') }} Un plan pensado para ti</span></div><div class="fp-app-copy"><span class="fp-eyebrow">FITNESS PLANET, SIEMPRE CONTIGO</span><h2 id="app-title">Tu entrenador.<br>En la palma<br>de tu mano.</h2><p>Imaginamos una forma más simple de llevar tu entrenamiento contigo. Rutinas, ejercicios y motivación, en un mismo lugar.</p><ul class="fp-app-benefits"><li>{{ icono('check-circle-fill') }} Rutinas adaptadas a tus objetivos</li><li>{{ icono('check-circle-fill') }} Series, repeticiones y descansos claros</li><li>{{ icono('check-circle-fill') }} El siguiente paso en tu experiencia fitness</li></ul><div class="fp-app-status"><span></span> APP MÓVIL EN PREPARACIÓN</div><div class="fp-store-buttons"><button type="button" class="fp-store-button" data-bs-toggle="modal" data-bs-target="#app-info" aria-label="Google Play · App en preparación">{{ icono('google-play') }}<span>Próximamente en<strong>Google Play</strong></span></button><button type="button" class="fp-store-button" data-bs-toggle="modal" data-bs-target="#app-info" aria-label="App Store · App en preparación">{{ icono('apple') }}<span>Próximamente en<strong>App Store</strong></span></button></div><p class="fp-app-note">Mientras llega, solicita tu rutina personalizada a nuestro equipo en recepción. Pantalla ilustrativa de la futura app.</p></div></div></section>
 <section class="fp-final-cta"><div class="container"><span class="fp-eyebrow">EL PRIMER PASO LO DAS TÚ</span><h2>Tu nueva versión te está esperando.</h2><p>Nosotros ponemos el espacio. Tú le das vida.</p><a class="btn fp-btn-primary" href="#planes">Encuentra tu plan {{ icono('arrow-right') }}</a></div></section>

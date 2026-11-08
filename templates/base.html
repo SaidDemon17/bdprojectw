@@ -23,7 +23,7 @@
 <form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="btn btn-outline-light btn-sm w-100 mt-3">Cerrar sesión</button></form></div>
 </aside>
 {% else %}
-{% from 'public_icons.html' import icono %}
+{% from 'public_icons.html' import icono,whatsapp %}
 {# La navegación pública utiliza únicamente las rutas existentes de Flask. #}
 <header class="public-header">
 <nav class="navbar navbar-expand-lg container fp-navbar" aria-label="Principal">
@@ -34,6 +34,7 @@
 <li class="nav-item"><a class="nav-link {{ 'active' if request.endpoint=='inicio' else '' }}" href="{{ url_for('inicio') }}" {% if request.endpoint=='inicio' %}aria-current="page"{% endif %}>Inicio</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ url_for('inicio') }}#beneficios">El gimnasio</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ url_for('inicio') }}#planes">Membresías</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ url_for('inicio') }}#equipo">Entrenadores</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ url_for('inicio') }}#app">Nuestra app</a></li>
 </ul>
 <div class="fp-nav-actions"><a class="btn fp-btn-calendar" href="{{ url_for('calendario') }}">{{ icono('calendar3') }} Calendario</a><a class="btn fp-btn-outline" href="{{ url_for('dashboard') if session.get('admin') else url_for('login') }}">{{ icono('person') }} Panel Admin</a></div>
@@ -51,10 +52,34 @@
 {% if not en_panel %}
 <footer class="public-footer">
 <div class="container">
-<div class="fp-footer-top"><div class="fp-footer-brand"><a class="fp-brand" href="{{ url_for('inicio') }}"><span class="fp-brand-emblem" aria-hidden="true">fp<span></span></span><span>FITNESS PLANET<small>GYM & WELLNESS</small></span></a><p>El espacio para empezar.<br>La energía para seguir.</p></div><div><h2>Tu gimnasio</h2><a href="{{ url_for('inicio') }}#beneficios">¿Por qué elegirnos?</a><a href="{{ url_for('inicio') }}#planes">Membresías</a><a href="{{ url_for('calendario') }}">Calendario de clases</a></div><div><h2>Tu próximo paso</h2><a href="{{ url_for('inicio') }}#sedes">Encuentra tu gimnasio</a><a href="{{ url_for('inicio') }}#app">Entrenamiento personalizado</a><a href="{{ url_for('dashboard') if session.get('admin') else url_for('login') }}">Panel Admin</a></div><div class="fp-footer-note"><span class="fp-footer-location">{{ icono('geo-alt') }} Perú</span><p>Entrena a tu ritmo.<br>Alcanza tu mejor versión.</p><span class="fp-footer-tag">MÁS FITNESS. MÁS TÚ.</span></div></div>
+<div class="fp-footer-top"><div class="fp-footer-brand"><a class="fp-brand" href="{{ url_for('inicio') }}"><span class="fp-brand-emblem" aria-hidden="true">fp<span></span></span><span>FITNESS PLANET<small>GYM & WELLNESS</small></span></a><p>El espacio para empezar.<br>La energía para seguir.</p></div><div><h2>Tu gimnasio</h2><a href="{{ url_for('inicio') }}#beneficios">¿Por qué elegirnos?</a><a href="{{ url_for('inicio') }}#planes">Membresías</a><a href="{{ url_for('calendario') }}">Calendario de clases</a></div><div><h2>Tu próximo paso</h2><a href="{{ url_for('inicio') }}#equipo">Nuestro team</a><a href="{{ url_for('inicio') }}#sedes">Nuestra sede principal</a><a href="{{ url_for('inicio') }}#app">Entrenamiento personalizado</a><a href="{{ url_for('dashboard') if session.get('admin') else url_for('login') }}">Panel Admin</a></div><div class="fp-footer-note"><span class="fp-footer-location">{{ icono('geo-alt') }} Perú</span><p>Entrena a tu ritmo.<br>Alcanza tu mejor versión.</p><span class="fp-footer-tag">MÁS FITNESS. MÁS TÚ.</span></div></div>
 <div class="fp-footer-bottom"><span>© {{ hoy.year }} Fitness Planet Gym</span><span>Proyecto académico · Empresa ficticia · Precios en soles (S/)</span></div>
 </div>
 </footer>
+{# Asistente de demostración en todas las páginas públicas; no usa WhatsApp ni envía datos. #}
+<aside class="fp-chat-widget" aria-label="Atención al cliente">
+  <button type="button" class="fp-chat-launcher" id="fp-chat-toggle" aria-controls="fp-support-chat" aria-expanded="false">
+    {{ whatsapp() }}<span>¿Necesitas ayuda?</span>
+  </button>
+  <section class="fp-chat-panel" id="fp-support-chat" role="dialog" aria-labelledby="fp-chat-title" aria-describedby="fp-chat-disclaimer" hidden>
+    <header class="fp-chat-header">
+      <span class="fp-chat-avatar"><img src="{{ url_for('static', filename='img/fitness-planet-hero.png') }}" alt="Asistente virtual de Fitness Planet" width="1536" height="1024" loading="lazy"></span>
+      <div class="fp-chat-identity"><h2 id="fp-chat-title">Fitness Planet</h2><span><i aria-hidden="true"></i> Asistente virtual · Demo</span></div>
+      <button type="button" class="fp-chat-close" id="fp-chat-close" aria-label="Cerrar chat"><span aria-hidden="true">×</span></button>
+    </header>
+    <div class="fp-chat-conversation" id="fp-chat-messages" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversación simulada">
+      <span class="fp-chat-day">ESTAMOS PARA AYUDARTE</span>
+      <div class="fp-chat-message fp-chat-message--assistant"><p>Nuestro equipo de atención al cliente está aquí para responder a sus preguntas</p><span>Asistente de Fitness Planet</span></div>
+      <p class="fp-chat-intro">Puedes consultar sobre membresías, clases, rutinas o nuestra sede.</p>
+    </div>
+    <div class="fp-chat-composer" role="group" aria-label="Escribir un mensaje simulado">
+      <label class="visually-hidden" for="fp-chat-reply">Responder</label>
+      <input id="fp-chat-reply" type="text" placeholder="Responder" maxlength="500" autocomplete="off">
+      <button type="button" id="fp-chat-send" class="fp-chat-send" aria-label="Enviar mensaje simulado" disabled>{{ icono('arrow-right') }}</button>
+    </div>
+    <p class="fp-chat-disclaimer" id="fp-chat-disclaimer">Chat simulado. Los mensajes no se envían a WhatsApp ni se guardan.</p>
+  </section>
+</aside>
 {% endif %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 {% if not en_panel %}<script src="{{ url_for('static', filename='js/public.js') }}" defer></script>{% endif %}
