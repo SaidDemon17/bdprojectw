@@ -1,0 +1,4 @@
+{# Iconos SVG locales para la web pública; no cambian los componentes del panel. #}
+{% macro icono(nombre, clase='') -%}
+<svg class="fp-icon {{ clase }}" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><use href="{{ url_for('static', filename='img/icons.svg') }}#{{ nombre }}"></use></svg>
+{%- endmacro %}
