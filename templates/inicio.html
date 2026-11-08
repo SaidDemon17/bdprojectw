@@ -45,6 +45,8 @@
       <h2 id="team-title">Nuestros Entrenadores</h2>
       <p>Conoce al equipo que pone energía, técnica y motivación en cada clase.</p>
     </div>
+    {# Correspondencia de retratos ficticios por ID; los nombres y las clases siguen viniendo de la BD. #}
+    {% set retratos = {1:'carlos.webp',2:'ana.webp',3:'milagros.webp',4:'pedro.webp',5:'rosa.webp'} %}
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 justify-content-center">
       {% for id_entrenador, sesiones in clases|groupby('id_entrenador') %}
       {# La disciplina corresponde a sus clases publicadas; no se inventan perfiles ni especialidades. #}
@@ -57,7 +59,13 @@
       <div class="col">
         <article class="card fp-team-card h-100" data-entrenador-id="{{ id_entrenador }}">
           <div class="fp-team-card-top">
-            <span class="fp-team-avatar fp-team-avatar--{{ disciplinas.nombres[0]|lower }}">{{ deporte(disciplinas.nombres[0]) }}</span>
+            <span class="fp-team-avatar fp-team-avatar--{{ disciplinas.nombres[0]|lower }}">
+              {% if retratos.get(id_entrenador) %}
+              <img class="fp-team-portrait" src="{{ url_for('static', filename='img/entrenadores/' + retratos[id_entrenador]) }}" width="1254" height="1254" alt="Retrato ilustrativo de {{ sesiones[0].entrenador }}" loading="lazy" decoding="async">
+              {% else %}
+              {{ deporte(disciplinas.nombres[0]) }}
+              {% endif %}
+            </span>
             <span class="fp-team-number">TEAM / {{ '%02d'|format(loop.index) }}</span>
           </div>
           <div class="card-body">
@@ -73,6 +81,7 @@
       <div class="col-12"><p class="fp-team-empty">Pronto podrás conocer al equipo de nuestras próximas clases.</p></div>
       {% endfor %}
     </div>
+    {% if clases %}<p class="fp-team-portrait-note">Retratos ilustrativos generados con IA para este proyecto.</p>{% endif %}
   </div>
 </section>
 {# Presentación conceptual de la app; los botones informan que aún no está disponible. #}
