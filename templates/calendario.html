@@ -1,3 +1,12 @@
-{% extends 'base.html' %}{% from 'macros.html' import tabla_clases %}
-{% block title %}Calendario | Fitness Planet Gym{% endblock %}
-{% block content %}<section class="section-space"><p class="eyebrow">ENCUENTRA TU RITMO</p><h1 class="display-title">Calendario de clases</h1><p class="muted">Sesiones diarias · Horarios de Lima · Las reservas se gestionan en recepción.</p><form class="date-form mb-4" method="get"><label class="form-label">Fecha de la sesión<input class="form-control" type="date" name="fecha" value="{{ dia }}" required></label><button class="btn btn-dark">Consultar cupos →</button></form><div class="surface">{{ tabla_clases(clases) }}</div><p class="small muted mt-3">Las reservas pendientes y confirmadas ocupan cupo. Disponibilidad sujeta a cambios.</p></section>{% endblock %}
+{% extends 'base.html' %}
+{% from 'macros.html' import tabla_clases %}
+{% from 'public_icons.html' import icono %}
+{% block title %}Calendario de clases | Fitness Planet Gym{% endblock %}
+{% block content %}
+<section class="fp-calendar-page" aria-labelledby="calendar-title"><div class="fp-calendar-intro"><div><span class="fp-eyebrow">ENCUENTRA TU RITMO</span><h1 id="calendar-title">Tu próxima clase.<br><span>Tu mejor energía.</span></h1><p>Spinning, yoga, zumba y mucho más.<br>Elige una fecha y descubre cómo quieres moverte.</p></div><span class="fp-calendar-illustration" aria-hidden="true">{{ icono('calendar3') }}<span>{{ icono('check-circle-fill') }}</span></span></div>
+<div class="fp-calendar-filter"><div><h2>Calendario de clases</h2><p>Sesiones diarias · Horarios de Lima, Perú</p></div>
+{# Se conservan el método, el nombre, el tipo y la validación del formulario original. #}
+<form class="date-form" method="get"><label class="form-label">Fecha de la sesión<input class="form-control" type="date" name="fecha" value="{{ dia }}" required></label><button class="btn fp-btn-primary">Consultar cupos {{ icono('arrow-right') }}</button></form></div>
+<div class="surface fp-schedule-card"><div class="fp-schedule-heading"><span>{{ icono('calendar3') }} {{ dia.strftime('%d/%m/%Y') }}</span><span>Encuentra tu clase favorita</span></div>{{ tabla_clases(clases) }}<p class="fp-table-hint">Desliza para ver todos los cupos {{ icono('arrow-right') }}</p></div><div class="fp-calendar-note">{{ icono('geo-alt') }}<p>Las reservas se gestionan en recepción. Las reservas pendientes y confirmadas ocupan cupo; la disponibilidad puede cambiar.</p><a class="fp-text-link" href="{{ url_for('inicio') }}#planes">Ver membresías {{ icono('arrow-right') }}</a></div>
+</section>
+{% endblock %}

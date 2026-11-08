@@ -6,3 +6,470 @@
 @media(max-width:1100px){.sidebar{width:200px;padding:25px 12px}.panel-main{margin-left:200px}.panel-content,.panel-header{padding-left:22px;padding-right:22px}.hero-copy{padding-left:30px}.hero h1{font-size:3.6rem}.planet-mark{font-size:7rem}.login-layout{gap:35px;padding:60px 0}.metric-value{font-size:2.1rem}}
 @media(max-width:767px){.sidebar{position:relative;width:100%;padding:18px}.sidebar .marca{margin:0 0 18px}.sidebar-caption{display:none}.sidebar nav{flex-direction:row;overflow-x:auto;gap:5px}.sidebar nav>a{white-space:nowrap;gap:7px;padding:10px}.nav-arrow{display:none}.sidebar-bottom{padding:12px 0 0;display:flex;gap:16px;align-items:center}.sidebar-bottom hr,.sidebar-bottom>.status-dot{display:none}.sidebar-bottom form{margin-left:auto}.sidebar-bottom form .btn{margin-top:0!important}.panel-main{margin-left:0}.panel-header{padding:22px 18px}.panel-header h1{font-size:1.5rem}.fecha-panel{display:none}.panel-content{padding:20px 16px}.surface{padding:20px}.section-heading{align-items:start;flex-wrap:wrap;gap:14px}.hero{grid-template-columns:1fr}.hero-copy{padding:36px 25px 30px}.hero h1{font-size:3.55rem}.hero-art{min-height:290px}.planet-mark{top:13%;left:35%;font-size:7rem}.orbit-one{top:10%;height:70%;width:80%;left:10%}.orbit-two{top:0;height:95%}.hero-notes{gap:18px;font-size:.55rem}.section-space{padding-top:40px}.plan-card{padding:25px}.login-layout{display:block;padding:35px 0}.login-intro{margin-bottom:30px}.login-intro h1{font-size:2.4rem}.login-number{display:none}.login-card{padding:25px}.public-header nav{gap:12px!important;font-size:.75rem}.public-header .marca{font-size:.6rem}.public-header .marca b{font-size:.65rem}.date-form{flex-wrap:wrap}.search-input{max-width:100%}.public-footer{margin-top:45px}.metric-value{font-size:2.7rem}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Tema comercial de la web pública. Se delimita al body para conservar el panel. */
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/manrope-latin-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+body.public-body {
+  --fp-blue: #0866e5;
+  --fp-blue-hover: #0055c7;
+  --fp-cyan: #08b5dc;
+  --fp-ink: #172a40;
+  --fp-muted: #647286;
+  --fp-border: #e4eaf1;
+  --fp-soft: #f6f9fc;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background: #fff;
+  color: var(--fp-ink);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.public-body h1, .public-body h2, .public-body h3 { color: var(--fp-ink); font-weight: 800; letter-spacing: -.045em; }
+.public-body p { color: var(--fp-muted); }
+.public-body a, .public-body button { -webkit-tap-highlight-color: transparent; }
+.public-body a:focus-visible, .public-body button:focus-visible { outline: 3px solid var(--fp-cyan); outline-offset: 5px; }
+.public-body .container { max-width: 1240px; padding-right: 24px; padding-left: 24px; }
+.public-main { flex: 1; min-width: 0; }
+.public-body .public-content { padding-top: 0; }
+.public-body .fp-section { padding-top: 88px; padding-bottom: 88px; }
+.public-body [id] { scroll-margin-top: 110px; }
+.public-body .fp-icon { flex-shrink: 0; display: inline-block; vertical-align: middle; }
+.public-body .fp-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--fp-blue); font-size: 10px; font-weight: 800; letter-spacing: .13em; line-height: 1.6; }
+.public-body .fp-tiny-line { height: 2px; width: 24px; background: var(--fp-blue); }
+.public-body .btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 12px 23px; border-radius: 7px; font-size: 13px; font-weight: 750; line-height: 1.4; transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease; }
+.public-body .btn .fp-icon { width: 17px; height: 17px; }
+.public-body .fp-btn-primary, .public-body .btn-lime, .public-body .btn-dark { background: var(--fp-blue); color: #fff; border: 1px solid var(--fp-blue); }
+.public-body .fp-btn-primary:hover, .public-body .btn-lime:hover, .public-body .btn-dark:hover { background: var(--fp-blue-hover); border-color: var(--fp-blue-hover); color: #fff; box-shadow: 0 5px 16px #0866e524; }
+.public-body .fp-btn-outline, .public-body .btn-outline-dark { background: #fff; border: 1px solid #b9d2f3; color: var(--fp-blue); }
+.public-body .fp-btn-outline:hover, .public-body .btn-outline-dark:hover { background: #eef6ff; border-color: var(--fp-blue); color: var(--fp-blue); }
+.public-body .fp-text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--fp-ink); font-size: 12px; font-weight: 750; }
+.public-body .fp-text-link:hover { color: var(--fp-blue); }
+.public-body .fp-text-link .fp-icon { width: 15px; height: 15px; }
+.public-body .form-control, .public-body .form-select { min-height: 46px; background-color: #fff; border-color: #dce4ee; border-radius: 6px; color: var(--fp-ink); font-size: 13px; }
+.public-body .form-control:focus, .public-body .form-select:focus { border-color: var(--fp-blue); box-shadow: 0 0 0 3px #0866e51a; }
+.public-body .form-label { color: var(--fp-ink); font-size: 12px; }
+
+/* Cabecera clara y navegación adaptable con el componente collapse de Bootstrap. */
+.public-body .public-header { position: sticky; top: 0; z-index: 1030; background: #fffffff5; border-bottom: 1px solid var(--fp-border); backdrop-filter: blur(12px); color: var(--fp-ink); }
+.public-body .fp-navbar { min-height: 86px; padding-top: 15px; padding-bottom: 15px; }
+.public-body .fp-brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; color: var(--fp-ink); font-size: 13px; font-weight: 800; line-height: 1.15; letter-spacing: -.025em; }
+.public-body .fp-brand small { display: block; margin-top: 6px; font-size: 8px; font-weight: 600; letter-spacing: .3em; color: var(--fp-muted); }
+.public-body .fp-brand-emblem { display: grid; place-items: center; position: relative; width: 44px; height: 44px; border-radius: 13px 13px 13px 3px; background: var(--fp-blue); color: #fff; font-size: 29px; font-weight: 800; font-style: italic; letter-spacing: -.14em; padding-right: 4px; line-height: 1; }
+.public-body .fp-brand-emblem > span { position: absolute; width: 8px; height: 8px; background: var(--fp-cyan); border: 2px solid #fff; border-radius: 50%; right: -3px; top: -2px; }
+.public-body .fp-nav-links { gap: 14px; padding-left: 18px; }
+.public-body .fp-nav-links .nav-link { color: #465569; font-size: 11px; font-weight: 700; padding: 10px 6px; }
+.public-body .fp-nav-links .nav-link:hover, .public-body .fp-nav-links .nav-link.active { color: var(--fp-blue); }
+.public-body .fp-nav-actions { display: flex; gap: 10px; }
+.public-body .fp-nav-actions .btn { min-height: 40px; font-size: 11px; gap: 8px; padding: 10px 13px; }
+.public-body .fp-nav-actions .fp-icon { width: 14px; height: 14px; }
+.public-body .fp-btn-calendar { color: #42556e; border: 1px solid var(--fp-border); background: #fff; }
+.public-body .fp-btn-calendar:hover { color: var(--fp-blue); background: #f3f8ff; border-color: #b9d2f3; }
+.public-body .fp-menu-toggle { border: 1px solid var(--fp-border); padding: 8px; color: var(--fp-blue); }
+.public-body .fp-menu-toggle .fp-icon { width: 24px; height: 24px; }
+
+/* Hero: fotografía propia, composición luminosa y precio real del primer plan. */
+.public-body .fp-hero { position: relative; overflow: hidden; background: #f1f7fd; padding: 30px 0 65px; }
+.public-body .fp-hero-grid { display: grid; grid-template-columns: 1fr 1.06fr; gap: 34px; align-items: center; min-height: 510px; }
+.public-body .fp-hero-copy { padding: 30px 0; position: relative; z-index: 1; }
+.public-body .fp-hero h1 { max-width: 620px; margin: 24px 0 22px; font-size: clamp(46px, 5vw, 66px); line-height: 1.08; letter-spacing: -.065em; }
+.public-body .fp-hero h1 span { color: var(--fp-blue); }
+.public-body .fp-hero-copy > p { max-width: 430px; margin: 0 0 29px; font-size: 14px; line-height: 1.9; }
+.public-body .fp-hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.public-body .fp-hero-actions > .btn { min-width: 160px; }
+.public-body .fp-hero-details { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 34px; font-size: 10px; color: #52657b; }
+.public-body .fp-hero-details > span { display: inline-flex; gap: 7px; align-items: center; }
+.public-body .fp-hero-details .fp-icon { color: var(--fp-blue); width: 13px; height: 13px; }
+.public-body .fp-hero-visual { position: relative; min-width: 0; height: 470px; }
+.public-body .fp-hero-visual::before { content: ""; position: absolute; width: 370px; height: 370px; right: -90px; top: -30px; border: 1px solid #c6dff8; border-radius: 50%; }
+.public-body .fp-hero-photo { position: absolute; inset: 0 -28px 0 0; overflow: hidden; border-radius: 100px 16px 100px 16px; background: #d6ebfa; }
+.public-body .fp-hero-photo img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 55% 40%; }
+.public-body .fp-hero-photo::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px #0866e508; pointer-events: none; }
+.public-body .fp-photo-caption { position: absolute; bottom: 25px; left: -33px; display: flex; align-items: center; gap: 12px; padding: 15px 20px 15px 14px; background: #fff; box-shadow: 0 10px 30px #29436714; border: 1px solid #e7eff6; border-radius: 11px; }
+.public-body .fp-caption-icon { display: grid; place-items: center; width: 40px; height: 40px; background: #e9f3ff; color: var(--fp-blue); border-radius: 10px; }
+.public-body .fp-photo-caption strong { display: block; font-size: 11px; }
+.public-body .fp-photo-caption div > span { display: block; font-size: 9px; margin-top: 3px; color: var(--fp-muted); }
+.public-body .fp-hero-price { position: absolute; right: -36px; bottom: 34px; background: #fff; padding: 17px 20px; border-radius: 10px; border: 1px solid #e7eff6; box-shadow: 0 8px 28px #2943670d; }
+.public-body .fp-hero-price > span { display: block; color: var(--fp-muted); font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+.public-body .fp-hero-price > strong { display: block; font-size: 28px; font-weight: 800; color: var(--fp-blue); letter-spacing: -.06em; line-height: 1.5; }
+.public-body .fp-hero-price > small { color: var(--fp-muted); font-size: 10px; }
+.public-body .fp-visual-word { position: absolute; bottom: -28px; right: 40px; font-size: 8px; letter-spacing: .3em; color: #758da6; }
+
+/* El buscador simulado opera en el navegador y no modifica formularios de Flask. */
+.public-body .fp-finder-wrap { position: relative; margin-top: -34px; z-index: 2; }
+.public-body .fp-finder { display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; row-gap: 14px; align-items: center; padding: 27px 30px 22px; border: 1px solid var(--fp-border); background: #fff; border-radius: 13px; box-shadow: 0 12px 34px #233f5e0a; }
+.public-body .fp-finder-heading { display: flex; gap: 16px; align-items: center; grid-row: span 2; }
+.public-body .fp-finder-icon { display: grid; place-items: center; height: 52px; width: 52px; background: #eef6ff; border: 1px solid #dfecfc; color: var(--fp-blue); border-radius: 12px; flex-shrink: 0; }
+.public-body .fp-finder-icon .fp-icon { width: 25px; height: 25px; }
+.public-body .fp-finder-heading h2 { font-size: 19px; letter-spacing: -.04em; margin: 8px 0 0; }
+.public-body .fp-finder-heading .fp-eyebrow { font-size: 8px; }
+.public-body .fp-finder-controls { display: flex; gap: 12px; align-items: flex-end; }
+.public-body .fp-finder-controls label { flex: 1; font-size: 10px; color: var(--fp-muted); font-weight: 600; }
+.public-body .fp-finder-controls .form-select { margin-top: 6px; min-height: 46px; font-weight: 650; }
+.public-body .fp-finder-controls .btn { font-size: 11px; min-height: 46px; padding: 12px 18px; }
+.public-body .fp-finder-note { grid-column: 2; margin: -7px 0 0; font-size: 9px; color: #78879a; }
+.public-body .fp-finder-result { display: flex; align-items: center; justify-content: space-between; gap: 20px; grid-column: 1 / -1; padding: 18px 20px; border-radius: 8px; background: #f1f7ff; border: 1px solid #dceafa; }
+.public-body .fp-finder-result[hidden] { display: none; }
+.public-body .fp-finder-result strong { font-size: 13px; }
+.public-body .fp-finder-result p { font-size: 11px; margin: 4px 0 0; }
+.public-body .fp-finder-result a { white-space: nowrap; color: var(--fp-blue); }
+
+/* Beneficios: iconos Bootstrap y una grilla espaciosa, sin tarjetas recargadas. */
+.public-body .fp-section-heading { margin-bottom: 44px; }
+.public-body .fp-section-heading h2 { margin: 13px 0 13px; font-size: clamp(27px, 3vw, 36px); line-height: 1.2; }
+.public-body .fp-section-heading > p, .public-body .fp-section-heading > div > p { font-size: 13px; line-height: 1.8; margin: 0; }
+.public-body .fp-benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.public-body .fp-benefit { text-align: center; padding: 0 25px; border-left: 1px solid #edf0f5; }
+.public-body .fp-benefit:first-child { border-left: 0; }
+.public-body .fp-benefit-icon { display: grid; place-items: center; width: 64px; height: 64px; margin: 0 auto 22px; border-radius: 18px; color: var(--fp-blue); background: #edf6ff; }
+.public-body .fp-benefit-icon .fp-icon { width: 30px; height: 30px; }
+.public-body .fp-benefit h3 { font-size: 14px; letter-spacing: -.025em; line-height: 1.5; margin-bottom: 10px; }
+.public-body .fp-benefit p { font-size: 11px; line-height: 1.85; margin: 0; }
+
+/* Planes: se conserva la información de precio, tipo y duración obtenida de la BD. */
+.public-body .fp-plans-section { background: #f7f9fc; border-top: 1px solid #edf0f5; border-bottom: 1px solid #edf0f5; }
+.public-body .fp-plans-grid { margin-top: 5px; }
+.public-body .fp-plan-card { display: flex; flex-direction: column; position: relative; height: 100%; background: #fff; border: 1px solid #e0e6ee; border-radius: 12px; padding: 29px; box-shadow: 0 6px 20px #16365a05; transition: border-color .2s ease, box-shadow .2s ease; }
+.public-body .fp-plan-card:hover { box-shadow: 0 12px 28px #16365a0d; border-color: #a9c9f1; }
+.public-body .fp-plan-featured { border: 2px solid var(--fp-blue); padding: 28px; box-shadow: 0 8px 26px #0866e50d; }
+.public-body .fp-plan-ribbon { display: block; position: absolute; top: -13px; left: 50%; transform: translateX(-50%); padding: 6px 13px; border-radius: 5px; white-space: nowrap; background: var(--fp-blue); color: #fff; font-size: 8px; font-weight: 750; letter-spacing: .04em; }
+.public-body .fp-plan-number { color: #78869a; font-weight: 700; font-size: 8px; letter-spacing: .12em; }
+.public-body .fp-plan-top h3 { margin: 13px 0 6px; font-size: 26px; }
+.public-body .fp-plan-top p { font-size: 11px; margin-bottom: 24px; }
+.public-body .fp-plan-price { font-size: clamp(28px, 3.1vw, 43px); font-weight: 800; letter-spacing: -.06em; line-height: 1.2; color: var(--fp-ink); }
+.public-body .fp-plan-price-note { display: block; margin-top: 8px; color: var(--fp-muted); font-size: 9px; }
+.public-body .fp-plan-duration { display: flex; gap: 9px; align-items: center; margin-top: 23px; padding-bottom: 23px; border-bottom: 1px solid var(--fp-border); color: #465d77; font-size: 11px; font-weight: 650; }
+.public-body .fp-plan-duration .fp-icon { color: var(--fp-blue); width: 14px; height: 14px; }
+.public-body .fp-plan-benefits { list-style: none; padding: 0; margin: 23px 0 30px; }
+.public-body .fp-plan-benefits li { display: flex; align-items: flex-start; gap: 9px; margin-top: 15px; color: #526276; font-size: 11px; line-height: 1.6; }
+.public-body .fp-plan-benefits .fp-icon { color: var(--fp-blue); width: 16px; height: 16px; margin-top: 1px; }
+.public-body .fp-plan-button { width: 100%; margin-top: auto; font-size: 11px; justify-content: space-between; }
+.public-body .fp-plans-footnote { display: flex; gap: 8px; justify-content: center; align-items: center; margin: 27px 0 0; text-align: center; font-size: 10px; }
+.public-body .fp-plans-footnote .fp-icon { color: var(--fp-blue); width: 13px; height: 13px; }
+.public-body .fp-plans-empty { text-align: center; padding: 25px; background: #fff; border: 1px solid var(--fp-border); border-radius: 10px; }
+
+.public-body .fp-table-hint { display: none; }
+
+/* Clases y calendario: misma tabla y mismos campos del formulario público. */
+.public-body .fp-heading-split { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+.public-body .fp-heading-split .btn { flex-shrink: 0; }
+.public-body .fp-schedule-card { padding: 0; border-color: var(--fp-border); border-radius: 12px; overflow: hidden; box-shadow: 0 5px 25px #16365a04; }
+.public-body .fp-schedule-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 19px 26px; background: #f6faff; border-bottom: 1px solid #e6eef8; font-size: 10px; color: var(--fp-muted); }
+.public-body .fp-schedule-heading > span:first-child { display: flex; gap: 9px; align-items: center; color: var(--fp-blue); font-size: 11px; font-weight: 750; }
+.public-body .fp-schedule-heading .fp-icon { width: 15px; height: 15px; }
+.public-body .table { min-width: 600px; font-size: 12px; }
+.public-body .table th { padding: 18px 25px; font-size: 9px; color: #78869a; border-color: #edf1f6; }
+.public-body .table td { padding: 19px 25px; color: #3c5069; border-color: #edf1f6; }
+.public-body .table td:first-child { color: var(--fp-ink); }
+.public-body .table small { color: var(--fp-muted); font-size: 9px; }
+.public-body .ocupacion { background: #e8eff9; width: 90px; }
+.public-body .ocupacion span { background: var(--fp-blue); }
+.public-body .badge.text-bg-success { color: #1765ab!important; background: #e9f4ff!important; font-weight: 650; font-size: 9px; }
+.public-body .fp-calendar-page { padding: 65px 0 75px; }
+.public-body .fp-calendar-intro { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 46px; }
+.public-body .fp-calendar-intro h1 { font-size: clamp(36px, 4.5vw, 53px); line-height: 1.15; margin: 16px 0 20px; }
+.public-body .fp-calendar-intro h1 span { color: var(--fp-blue); }
+.public-body .fp-calendar-intro p { font-size: 14px; line-height: 1.8; margin: 0; }
+.public-body .fp-calendar-illustration { display: grid; place-items: center; position: relative; width: 165px; height: 165px; margin-right: 65px; border-radius: 38px; background: #edf6ff; color: var(--fp-blue); transform: rotate(6deg); }
+.public-body .fp-calendar-illustration > .fp-icon { width: 75px; height: 75px; }
+.public-body .fp-calendar-illustration > span { position: absolute; bottom: 4px; right: -16px; padding: 8px; background: #fff; border-radius: 50%; }
+.public-body .fp-calendar-illustration > span .fp-icon { width: 37px; height: 37px; color: var(--fp-cyan); }
+.public-body .fp-calendar-filter { display: flex; justify-content: space-between; gap: 25px; align-items: flex-end; padding: 25px 28px; background: #f7f9fc; border: 1px solid var(--fp-border); border-radius: 10px; margin-bottom: 25px; }
+.public-body .fp-calendar-filter h2 { margin: 0 0 6px; font-size: 20px; }
+.public-body .fp-calendar-filter p { font-size: 11px; margin: 0; }
+.public-body .fp-calendar-filter .date-form { gap: 10px; align-items: flex-end; }
+.public-body .fp-calendar-filter .form-label { font-size: 10px; }
+.public-body .fp-calendar-filter .form-control { margin-top: 6px; min-height: 44px; }
+.public-body .fp-calendar-filter .btn { min-height: 44px; font-size: 11px; }
+.public-body .fp-calendar-note { display: flex; align-items: flex-start; gap: 12px; padding: 23px 5px; }
+.public-body .fp-calendar-note > .fp-icon { color: var(--fp-blue); width: 16px; height: 16px; margin-top: 3px; }
+.public-body .fp-calendar-note p { max-width: 650px; font-size: 11px; margin: 0; }
+.public-body .fp-calendar-note > a { white-space: nowrap; margin-left: auto; color: var(--fp-blue); }
+
+/* App conceptual: teléfono construido en HTML/CSS y enlaces de tiendas simulados. */
+.public-body .fp-app-section { position: relative; background: #edf5ff; overflow: hidden; padding: 85px 0 75px; }
+.public-body .fp-app-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
+.public-body .fp-phone-stage { height: 560px; position: relative; }
+.public-body .fp-phone-orbit { position: absolute; width: 420px; height: 420px; left: 25px; top: 65px; background: #dcecff; border: 1px solid #d3e5fb; border-radius: 50%; }
+.public-body .fp-phone { position: absolute; width: 280px; height: 530px; left: 105px; top: 0; padding: 9px; border-radius: 38px; background: #263548; box-shadow: 8px 22px 40px #27486f24; transform: rotate(-7deg); }
+.public-body .fp-phone-camera { position: absolute; width: 77px; height: 18px; background: #263548; border-radius: 0 0 12px 12px; top: 8px; left: 50%; transform: translateX(-50%); z-index: 2; }
+.public-body .fp-phone-screen { height: 100%; border-radius: 30px; padding: 32px 18px 15px; overflow: hidden; background: #f7f9fc; }
+.public-body .fp-phone-brand { display: flex; align-items: center; gap: 7px; color: var(--fp-blue); font-size: 20px; font-weight: 800; font-style: italic; letter-spacing: -.1em; }
+.public-body .fp-phone-brand > span:not(.fp-phone-avatar) { font-size: 6px; font-style: normal; letter-spacing: .05em; color: var(--fp-ink); }
+.public-body .fp-phone-avatar { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: #e6effb; margin-left: auto; }
+.public-body .fp-phone-avatar .fp-icon { width: 14px; height: 14px; }
+.public-body .fp-phone-greeting { font-size: 6px; font-weight: 800; letter-spacing: .11em; margin: 18px 0 7px; }
+.public-body .fp-phone h3 { font-size: 23px; line-height: 1.1; margin: 0 0 16px; }
+.public-body .fp-phone-workout { display: flex; justify-content: space-between; align-items: center; padding: 16px; background: var(--fp-blue); color: #fff; border-radius: 11px; }
+.public-body .fp-phone-workout div > span { display: block; font-size: 6px; letter-spacing: .1em; opacity: .8; }
+.public-body .fp-phone-workout strong { display: block; font-size: 13px; margin: 5px 0; }
+.public-body .fp-phone-workout small { display: block; font-size: 6px; opacity: .85; }
+.public-body .fp-workout-icon { display: grid; place-items: center; background: #ffffff22; border-radius: 10px; height: 38px; width: 38px; }
+.public-body .fp-workout-icon .fp-icon { width: 21px; height: 21px; }
+.public-body .fp-phone-section-label { display: flex; justify-content: space-between; margin-top: 16px; margin-bottom: 6px; font-size: 9px; font-weight: 800; }
+.public-body .fp-phone-section-label span { color: var(--fp-blue); font-size: 6px; }
+.public-body .fp-phone-exercise { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--fp-border); }
+.public-body .fp-phone-exercise > span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 6px; background: #e8f0fb; font-size: 8px; color: var(--fp-blue); font-weight: 700; }
+.public-body .fp-phone-exercise strong { display: block; font-size: 8px; }
+.public-body .fp-phone-exercise small { display: block; margin-top: 2px; color: var(--fp-muted); font-size: 6px; }
+.public-body .fp-phone-exercise > .fp-icon { margin-left: auto; width: 10px; height: 10px; color: #7a899c; }
+.public-body .fp-phone-start { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 15px; padding: 10px 6px; border-radius: 6px; background: var(--fp-blue); color: #fff; font-size: 8px; font-weight: 750; }
+.public-body .fp-phone-start .fp-icon { width: 12px; height: 12px; }
+.public-body .fp-phone-nav { display: flex; justify-content: space-around; margin-top: 15px; color: #7c8da3; }
+.public-body .fp-phone-nav .fp-icon { width: 12px; height: 12px; }
+.public-body .fp-phone-nav .fp-icon:first-child { color: var(--fp-blue); }
+.public-body .fp-phone-floating { display: inline-flex; align-items: center; gap: 10px; position: absolute; bottom: 65px; right: 8px; background: #fff; padding: 16px 20px; border-radius: 10px; color: var(--fp-ink); box-shadow: 0 8px 30px #27486f14; font-size: 10px; font-weight: 750; }
+.public-body .fp-phone-floating .fp-icon { color: var(--fp-blue); width: 17px; height: 17px; }
+.public-body .fp-app-copy { padding-right: 30px; }
+.public-body .fp-app-copy h2 { font-size: clamp(36px, 4vw, 52px); line-height: 1.12; margin: 20px 0 24px; }
+.public-body .fp-app-copy > p { max-width: 425px; font-size: 13px; line-height: 1.9; }
+.public-body .fp-app-benefits { list-style: none; margin: 24px 0; padding: 0; }
+.public-body .fp-app-benefits li { display: flex; gap: 8px; align-items: flex-start; font-size: 11px; color: #415b77; margin: 12px 0; }
+.public-body .fp-app-benefits .fp-icon { width: 13px; height: 13px; margin-top: 3px; color: var(--fp-blue); }
+.public-body .fp-app-status { display: flex; gap: 6px; align-items: center; color: #46627f; font-size: 8px; font-weight: 800; letter-spacing: .08em; margin: 28px 0 13px; }
+.public-body .fp-app-status > span { width: 5px; height: 5px; background: var(--fp-blue); border-radius: 50%; }
+.public-body .fp-store-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.public-body .fp-store-button { display: inline-flex; gap: 10px; align-items: center; text-align: left; padding: 9px 16px; border: 1px solid #132236; border-radius: 7px; background: #172a40; color: #fff; min-width: 147px; transition: background-color .2s ease; }
+.public-body .fp-store-button:hover { background: #25496b; }
+.public-body .fp-store-button > .fp-icon { width: 23px; height: 23px; }
+.public-body .fp-store-button > span { font-size: 7px; line-height: 1.5; }
+.public-body .fp-store-button strong { display: block; font-size: 15px; font-weight: 700; letter-spacing: -.03em; }
+.public-body .fp-app-copy .fp-app-note { margin-top: 17px; font-size: 9px; max-width: 375px; line-height: 1.8; }
+.public-body .fp-final-cta { padding: 70px 0 74px; text-align: center; background: #fff; }
+.public-body .fp-final-cta h2 { font-size: clamp(25px, 3vw, 33px); margin: 13px 0 12px; }
+.public-body .fp-final-cta p { margin-bottom: 23px; font-size: 12px; }
+
+/* Diálogos puramente informativos, sin nuevos campos ni procesos de inscripción. */
+.public-body .fp-modal { border: 1px solid var(--fp-border); border-radius: 14px; box-shadow: 0 20px 80px #17345a20; }
+.public-body .fp-modal .modal-header { border: 0; padding: 24px 26px 0; }
+.public-body .fp-modal .modal-body { padding: 26px; }
+.public-body .fp-modal .modal-footer { padding: 0 26px 26px; border: 0; justify-content: flex-start; }
+.public-body .fp-modal h2 { font-size: 28px; line-height: 1.2; margin: 18px 0; }
+.public-body .fp-modal p { font-size: 13px; }
+.public-body .fp-modal-icon { display: grid; place-items: center; width: 54px; height: 54px; color: var(--fp-blue); background: #edf6ff; border-radius: 13px; }
+.public-body .fp-modal-icon .fp-icon { width: 27px; height: 27px; }
+.public-body .fp-modal .fp-selected-plan { color: var(--fp-blue); font-weight: 750; }
+.public-body .fp-modal .fp-modal-note { margin: 18px 0 0; font-size: 10px; }
+
+/* Acceso existente y pie público; el formulario de login mantiene su contrato. */
+.public-body .login-layout { padding: 75px 0; gap: 75px; }
+.public-body .login-intro { padding: 40px; border-radius: 16px; background: #f0f7ff; }
+.public-body .login-intro .eyebrow { color: var(--fp-blue); font-size: 9px; }
+.public-body .login-intro h1 { font-size: clamp(34px, 4vw, 46px); }
+.public-body .login-intro p { font-size: 13px; }
+.public-body .login-number { color: var(--fp-blue); }
+.public-body .login-card { border-color: var(--fp-border); border-radius: 12px; box-shadow: 0 8px 32px #17345a08; }
+.public-body .login-card h2 { font-size: 27px; }
+.public-body .login-card .eyebrow { color: var(--fp-blue); font-size: 8px; }
+.public-body .login-card p { font-size: 12px; }
+.public-body .public-footer { margin-top: 0; padding: 52px 0 22px; background: #f8fafc; color: var(--fp-ink); border-top: 1px solid var(--fp-border); }
+.public-body .fp-footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1.1fr 1fr; gap: 45px; padding-bottom: 40px; }
+.public-body .fp-footer-brand > p { margin: 21px 0 0; font-size: 11px; line-height: 1.9; }
+.public-body .fp-footer-top h2 { font-size: 11px; font-weight: 800; letter-spacing: -.01em; margin: 7px 0 20px; }
+.public-body .fp-footer-top > div > a:not(.fp-brand) { display: block; width: fit-content; color: var(--fp-muted); font-size: 10px; margin: 11px 0; }
+.public-body .fp-footer-top > div > a:not(.fp-brand):hover { color: var(--fp-blue); }
+.public-body .fp-footer-location { display: inline-flex; gap: 6px; align-items: center; font-weight: 750; font-size: 11px; margin: 5px 0 16px; }
+.public-body .fp-footer-location .fp-icon { width: 14px; height: 14px; color: var(--fp-blue); }
+.public-body .fp-footer-note > p { font-size: 10px; line-height: 1.9; }
+.public-body .fp-footer-tag { color: var(--fp-blue); font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+.public-body .fp-footer-bottom { display: flex; justify-content: space-between; gap: 15px; padding-top: 20px; border-top: 1px solid var(--fp-border); font-size: 9px; color: #76869a; }
+
+/* Ajustes de composición para tabletas y móviles, sin desplazamiento horizontal. */
+@media (max-width: 1199px) {
+  .public-body .fp-nav-links { gap: 7px; padding-left: 12px; }
+  .public-body .fp-nav-links .nav-link { font-size: 10px; }
+  .public-body .fp-nav-actions .btn { padding: 10px; gap: 6px; }
+  .public-body .fp-hero h1 { font-size: 56px; }
+  .public-body .fp-hero-grid { gap: 24px; }
+  .public-body .fp-hero-photo { right: 0; }
+  .public-body .fp-hero-price { right: -10px; }
+  .public-body .fp-finder { padding: 25px; gap: 14px; }
+  .public-body .fp-finder-heading h2 { font-size: 16px; }
+  .public-body .fp-finder-icon { width: 45px; height: 45px; }
+  .public-body .fp-plan-card { padding: 25px; }
+  .public-body .fp-plan-featured { padding: 24px; }
+  .public-body .fp-app-grid { gap: 35px; }
+  .public-body .fp-phone { left: 65px; }
+  .public-body .fp-phone-orbit { width: 350px; height: 350px; left: 0; top: 100px; }
+  .public-body .fp-app-copy { padding-right: 0; }
+  .public-body .fp-phone-floating { right: -5px; bottom: 55px; }
+}
+@media (max-width: 991px) {
+  .public-body .fp-navbar { min-height: 76px; padding-top: 13px; padding-bottom: 13px; }
+  .public-body .fp-nav-links { gap: 4px; padding: 15px 0 12px; }
+  .public-body .fp-nav-links .nav-link { font-size: 13px; padding: 9px 0; }
+  .public-body .fp-nav-actions { padding-bottom: 10px; }
+  .public-body .fp-nav-actions .btn { font-size: 12px; padding: 11px 18px; }
+  .public-body .fp-hero { padding-top: 20px; }
+  .public-body .fp-hero-grid { gap: 28px; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .public-body .fp-hero h1 { font-size: 45px; }
+  .public-body .fp-hero-copy .fp-eyebrow { font-size: 8px; }
+  .public-body .fp-hero-copy > p { font-size: 12px; }
+  .public-body .fp-hero-actions { gap: 16px; }
+  .public-body .fp-hero-actions .btn { min-width: 140px; }
+  .public-body .fp-hero-visual { height: 390px; }
+  .public-body .fp-hero-photo { border-radius: 70px 15px 70px 15px; }
+  .public-body .fp-hero-photo img { object-position: 59% 50%; }
+  .public-body .fp-photo-caption { left: -10px; padding: 12px; gap: 8px; }
+  .public-body .fp-photo-caption strong { font-size: 9px; }
+  .public-body .fp-hero-price { padding: 12px 15px; bottom: 15px; }
+  .public-body .fp-hero-price strong { font-size: 22px; }
+  .public-body .fp-hero-details { gap: 10px; margin-top: 22px; font-size: 9px; }
+  .public-body .fp-finder { grid-template-columns: .95fr 1.05fr; }
+  .public-body .fp-finder-heading { gap: 12px; }
+  .public-body .fp-finder-heading h2 { font-size: 16px; line-height: 1.5; }
+  .public-body .fp-finder-controls { flex-direction: column; align-items: stretch; gap: 8px; }
+  .public-body .fp-benefit { padding: 0 18px; }
+  .public-body .fp-benefit h3 { font-size: 12px; }
+  .public-body .fp-benefit p { font-size: 10px; }
+  .public-body .fp-plan-card { padding: 22px 19px; }
+  .public-body .fp-plan-featured { padding: 21px 18px; }
+  .public-body .fp-plan-price { font-size: 32px; }
+  .public-body .fp-plan-top h3 { font-size: 23px; }
+  .public-body .fp-plan-top p { min-height: 36px; }
+  .public-body .fp-plan-benefits li { font-size: 10px; }
+  .public-body .fp-plan-ribbon { font-size: 7px; padding: 6px 10px; }
+  .public-body .fp-plan-button { font-size: 10px; padding: 12px; gap: 6px; }
+  .public-body .fp-phone-stage { height: 530px; }
+  .public-body .fp-phone { left: 28px; width: 265px; height: 530px; }
+  .public-body .fp-phone-orbit { width: 290px; height: 290px; left: 0; }
+  .public-body .fp-phone-floating { right: 0; bottom: 28px; padding: 12px; font-size: 8px; }
+  .public-body .fp-app-grid { gap: 40px; }
+  .public-body .fp-app-copy .fp-eyebrow { font-size: 8px; }
+  .public-body .fp-app-copy h2 { font-size: 39px; }
+  .public-body .fp-store-button { min-width: 130px; padding: 9px 12px; gap: 8px; }
+  .public-body .fp-store-button strong { font-size: 13px; }
+  .public-body .fp-calendar-filter { align-items: stretch; }
+  .public-body .fp-calendar-filter .date-form { flex-wrap: wrap; }
+  .public-body .fp-calendar-filter .date-form > * { flex: 1; }
+  .public-body .fp-calendar-illustration { margin-right: 10px; }
+  .public-body .fp-footer-top { gap: 25px; grid-template-columns: 1.3fr 1fr 1fr; }
+  .public-body .fp-footer-note { display: none; }
+}
+@media (max-width: 767px) {
+  .public-body .container { padding-left: 20px; padding-right: 20px; }
+  .public-body .fp-section { padding-top: 60px; padding-bottom: 60px; }
+  .public-body .fp-eyebrow { font-size: 8px; }
+  .public-body .fp-section-heading { margin-bottom: 35px; }
+  .public-body .fp-section-heading h2 { font-size: 29px; }
+  .public-body .fp-section-heading > p, .public-body .fp-section-heading > div > p { font-size: 12px; }
+  .public-body .fp-brand { font-size: 12px; }
+  .public-body .fp-brand small { font-size: 7px; }
+  .public-body .fp-brand-emblem { width: 39px; height: 39px; font-size: 26px; border-radius: 11px 11px 11px 3px; }
+  .public-body .fp-hero { padding: 10px 0 62px; }
+  .public-body .fp-hero-grid { grid-template-columns: 1fr; gap: 10px; }
+  .public-body .fp-hero-copy { padding: 33px 0 14px; }
+  .public-body .fp-hero h1 { font-size: clamp(41px, 8vw, 58px); max-width: 100%; margin: 18px 0; }
+  .public-body .fp-hero-copy > p { max-width: 460px; font-size: 13px; margin-bottom: 24px; }
+  .public-body .fp-hero-actions { gap: 20px; }
+  .public-body .fp-hero-actions > .fp-text-link { font-size: 11px; }
+  .public-body .fp-hero-details { margin-top: 25px; gap: 19px; }
+  .public-body .fp-hero-visual { height: 330px; margin: 15px 7px 15px; }
+  .public-body .fp-hero-photo { inset: 0; border-radius: 55px 12px 55px 12px; }
+  .public-body .fp-hero-photo img { object-position: 50% 35%; }
+  .public-body .fp-hero-visual::before { width: 250px; height: 250px; right: -15px; top: -10px; }
+  .public-body .fp-hero-price { bottom: 12px; right: -9px; padding: 11px 14px; }
+  .public-body .fp-hero-price > span { font-size: 7px; }
+  .public-body .fp-hero-price > strong { font-size: 23px; }
+  .public-body .fp-photo-caption { bottom: 12px; left: -9px; padding: 11px 13px; }
+  .public-body .fp-photo-caption strong { font-size: 10px; }
+  .public-body .fp-caption-icon { width: 33px; height: 33px; }
+  .public-body .fp-visual-word { right: 3px; bottom: -24px; font-size: 7px; }
+  .public-body .fp-finder-wrap { margin-top: -26px; }
+  .public-body .fp-finder { display: flex; flex-direction: column; align-items: stretch; gap: 19px; padding: 23px; }
+  .public-body .fp-finder-heading h2 { font-size: 18px; line-height: 1.3; margin-top: 7px; }
+  .public-body .fp-finder-heading { gap: 13px; }
+  .public-body .fp-finder-controls { flex-direction: row; align-items: flex-end; }
+  .public-body .fp-finder-controls .btn { font-size: 10px; padding: 11px 13px; gap: 9px; }
+  .public-body .fp-finder-controls .btn > .fp-icon { width: 14px; height: 14px; }
+  .public-body .fp-finder-note { margin: -7px 0 0; font-size: 8px; }
+  .public-body .fp-finder-result { align-items: flex-start; flex-direction: column; gap: 12px; padding: 15px; }
+  .public-body .fp-benefits-grid { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+  .public-body .fp-benefit { padding: 0 16px; }
+  .public-body .fp-benefit:nth-child(odd) { border-left: 0; }
+  .public-body .fp-benefit-icon { width: 55px; height: 55px; border-radius: 15px; margin-bottom: 15px; }
+  .public-body .fp-benefit-icon .fp-icon { width: 25px; height: 25px; }
+  .public-body .fp-benefit h3 { font-size: 13px; }
+  .public-body .fp-benefit p { font-size: 10px; }
+  .public-body .fp-plans-grid { row-gap: 28px!important; }
+  .public-body .fp-plan-card { padding: 29px; }
+  .public-body .fp-plan-featured { padding: 28px; }
+  .public-body .fp-plan-top h3 { font-size: 28px; }
+  .public-body .fp-plan-top p { min-height: 0; font-size: 12px; }
+  .public-body .fp-plan-price { font-size: 43px; }
+  .public-body .fp-plan-benefits li { font-size: 12px; }
+  .public-body .fp-plan-ribbon { font-size: 8px; }
+  .public-body .fp-plan-button { font-size: 12px; padding: 13px 20px; }
+  .public-body .fp-plans-footnote { align-items: flex-start; font-size: 9px; line-height: 1.8; }
+  .public-body .fp-plans-footnote .fp-icon { margin-top: 3px; }
+  .public-body .fp-heading-split { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .public-body .fp-classes .fp-section-heading h2 { max-width: 330px; }
+  .public-body .fp-table-hint { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin: 0; padding: 12px 17px; border-top: 1px solid var(--fp-border); background: #fbfdff; color: #577494; font-size: 9px; }
+  .public-body .fp-table-hint .fp-icon { width: 13px; height: 13px; }
+  .public-body .fp-schedule-heading { padding: 17px; flex-wrap: wrap; gap: 6px; font-size: 9px; }
+  .public-body .fp-schedule-heading > span:first-child { font-size: 10px; }
+  .public-body .table th { padding: 15px 17px; }
+  .public-body .table td { padding: 17px; }
+  .public-body .fp-app-section { padding: 58px 0 55px; }
+  .public-body .fp-app-grid { grid-template-columns: 1fr; gap: 45px; }
+  .public-body .fp-app-copy { order: -1; }
+  .public-body .fp-app-copy h2 { font-size: 43px; }
+  .public-body .fp-app-copy > p { font-size: 13px; max-width: 450px; }
+  .public-body .fp-app-benefits li { font-size: 11px; }
+  .public-body .fp-store-button { min-width: 145px; padding: 10px 15px; }
+  .public-body .fp-store-button strong { font-size: 15px; }
+  .public-body .fp-phone-stage { width: 100%; max-width: 365px; height: 535px; margin: 0 auto; }
+  .public-body .fp-phone { left: calc(50% - 140px); width: 280px; }
+  .public-body .fp-phone-orbit { width: 310px; height: 310px; top: 100px; left: calc(50% - 155px); }
+  .public-body .fp-phone-floating { bottom: 30px; right: 0; padding: 14px; font-size: 9px; }
+  .public-body .fp-final-cta { padding: 54px 0 58px; }
+  .public-body .fp-final-cta h2 { font-size: 29px; }
+  .public-body .fp-calendar-page { padding: 40px 0; }
+  .public-body .fp-calendar-intro { padding-bottom: 30px; }
+  .public-body .fp-calendar-intro h1 { font-size: 38px; }
+  .public-body .fp-calendar-intro p { font-size: 12px; }
+  .public-body .fp-calendar-illustration { display: none; }
+  .public-body .fp-calendar-filter { flex-direction: column; gap: 20px; padding: 23px; }
+  .public-body .fp-calendar-filter .date-form { flex-wrap: wrap; }
+  .public-body .fp-calendar-filter .date-form .form-label { flex-basis: 140px; }
+  .public-body .fp-calendar-filter .date-form .btn { flex-basis: 140px; }
+  .public-body .fp-calendar-note { flex-wrap: wrap; gap: 10px; padding: 20px 4px; }
+  .public-body .fp-calendar-note p { flex: 1; }
+  .public-body .fp-calendar-note > a { margin: 0 0 0 26px; }
+  .public-body .login-layout { padding: 40px 0; }
+  .public-body .login-intro { padding: 27px; }
+  .public-body .login-card { padding: 28px; }
+  .public-body .public-footer { padding-top: 38px; }
+  .public-body .fp-footer-top { grid-template-columns: 1fr 1fr; gap: 26px 20px; padding-bottom: 28px; }
+  .public-body .fp-footer-brand { grid-column: 1 / -1; }
+  .public-body .fp-footer-brand > p { margin-top: 16px; }
+  .public-body .fp-footer-top h2 { margin-bottom: 16px; font-size: 12px; }
+  .public-body .fp-footer-top > div > a:not(.fp-brand) { font-size: 11px; }
+  .public-body .fp-footer-bottom { flex-direction: column; gap: 7px; font-size: 8px; }
+  .public-body .fp-modal .modal-body { padding: 23px; }
+}
+@media (max-width: 374px) {
+  .public-body .container { padding-left: 16px; padding-right: 16px; }
+  .public-body .fp-hero h1 { font-size: 39px; }
+  .public-body .fp-hero-actions { gap: 13px; }
+  .public-body .fp-hero-actions > .btn { min-width: 125px; padding: 12px 17px; }
+  .public-body .fp-hero-details { font-size: 8px; gap: 12px; }
+  .public-body .fp-finder { padding: 21px 18px; }
+  .public-body .fp-finder-controls { flex-direction: column; align-items: stretch; }
+  .public-body .fp-phone { left: calc(50% - 132px); width: 264px; }
+  .public-body .fp-phone-floating { right: -5px; }
+  .public-body .fp-photo-caption { display: none; }
+  .public-body .fp-store-button { min-width: 136px; padding: 10px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .public-body *, .public-body *::before, .public-body *::after { transition: none!important; animation: none!important; }
+}
